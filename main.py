@@ -11,17 +11,36 @@ class Plant:
 
 
 class Potato(Plant):
-    def __init__(self,starting_energy,tubers=[]):
+    def __init__(self, starting_energy, tubers=None):
         super().__init__(starting_energy)
-        self.tubers=tubers
+        
+        if tubers is None:
+            self.tubers = []
+        else:
+            self.tubers = tubers
+
+    def absorb_sunlight(self, sunlight_energy):
+        if not self.tubers:
+            
+            self.energy += sunlight_energy
+        else:
+            
+            self.energy += sunlight_energy / 2
+            
+            
+            tuber_share = (sunlight_energy / 2) / len(self.tubers)
+            for tuber in self.tubers:
+                tuber.energy += tuber_share
+
     def sprout_tuber(self):
-          if self.energy >= 30:
+        if self.energy >= 30:
             new_tuber = Tuber()
             self.tubers.append(new_tuber)
-            self.energy -=30
+            self.energy -= 30
+
 class Tuber:
-    def __init__(self,energy=30):
-        self.energy=energy
+    def __init__(self, energy=30):
+        self.energy = energy
 
 
 
