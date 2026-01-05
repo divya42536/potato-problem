@@ -14,6 +14,14 @@ class Potato(Plant):
     def __init__(self,starting_energy,tubers=[]):
         super().__init__(starting_energy)
         self.tubers=tubers
+    def sprout_tuber(self):
+          if self.energy >= 30:
+            new_tuber = Tuber()
+            self.tubers.append(new_tuber)
+            self.energy -=30
+class Tuber:
+    def __init__(self,energy=30):
+        self.energy=energy
 
 
 
