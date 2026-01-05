@@ -10,10 +10,13 @@ class Plant:
         return f"I am a {type(self).__name__} and I have {self.energy} energy!" 
 
 
-##########################################
-#       Add your new classes here!       #
-# (Make sure not to accidentally indent) #
-##########################################
+class Potato(Plant):
+    def __init__(self,starting_energy,tubers=[]):
+        super().__init__(starting_energy)
+        self.tubers=tubers
+
+
+
 
 
 ########## WAVE 1 ##########
